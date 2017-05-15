@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule }  from '@angular/router';
 import { HttpModule }  from '@angular/http';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 import { ClienteComponent } from '../clientes/cliente.component';
 import { ClientesService } from '../_service/clientes.service';
@@ -13,7 +14,11 @@ import { PedidoComponent } from '../pedidos/pedido.component';
 import { PedidosService } from '../_service/pedidos.service';
 import { PedidoFormComponent } from '../pedidos/pedido-form/pedido-form.component';
 import { PedidoListarComponent } from '../pedidos/pedido-listar/pedido_listar.component';
-import { NavBarComponent } from '../nav-bar/nav-bar.component'
+
+import { ProdutoComponent } from '../produtos/produto.component';
+import { ProdutosService } from '../_service/produtos.service';
+
+
 
 @NgModule({
   imports: [
@@ -24,22 +29,26 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component'
     HttpModule
   ],
   declarations: [
+    NavBarComponent,
     ClienteComponent,
     ClienteFormComponent,
     ClienteListarComponent,
     PedidoComponent,
     PedidoFormComponent,
     PedidoListarComponent,
-    NavBarComponent
+    ProdutoComponent
+    
   ],
   exports: [
+    NavBarComponent,
     ClienteComponent,
     PedidoComponent,
-    NavBarComponent
+    ProdutoComponent
   ],
   providers: [
     ClientesService,
-    PedidosService
+    PedidosService,
+    ProdutosService
   ]
 })
 export class HomeModule { }
