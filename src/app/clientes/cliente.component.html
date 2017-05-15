@@ -1,46 +1,18 @@
-<p>
-  Montrando {{ clientes.length }} clientes.
-</p>
+<app-nav-bar></app-nav-bar>
+<div id="dvResult"></div>
+<div class="row">
+  <div class="col s6">
+    <div id="btnRepresentandoEmpresa" class="center-align card-panel block-button" routerLink="/clientes/novo">
+      <div class="block-button-text">Novo</div>
+      <div class="block-button-phrase">Fazer pedido</div>
 
-<table>
-  <thead>
-  <tr>
-    <th data-field="name">Name</th>
-    <th data-field="name">Email</th>
-    <th data-field="name">Endereco</th>
-    <th data-field="name">Telefone</th>
-    <th data-field="name">Ponto de Referência</th>
-    <th data-field="name">Situacao</th>
-    <th data-field="name">Editar</th>
-    <th data-field="name">Apagar</th>
-  </tr>
-  </thead>
+    </div>
+  </div>
+  <div class="col s6">
+    <div id="btnProduto" class="center-align card-panel block-button" routerLink="/clientes/listar">
+      <div class="block-button-text">Listar</div>
+      <div class="block-button-phrase">Listar pedidos</div>
 
-  <tbody>
-    <tr *ngFor="let cliente of clientes">
-      <td>{{ cliente.nome }}</td>
-      <td>{{ cliente.email }}</td>
-      <td>{{ cliente.endereco }}</td>
-      <td>{{ cliente.telefone }}</td>
-      <td>{{ cliente.pontoDeReferencia }}</td>
-      <td>{{ cliente.situacao }}</td>
-      <td>
-        <a [routerLink]="['/clientes', cliente.id]">
-          <i class="material-icons">mode_edit</i>
-        </a>
-      </td>
-      <td>
-        <a (click)="deleteCliente(cliente)" href="">
-          <i class="material-icons">delete</i>
-        </a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-  <a class="btn-floating btn-large waves-effect waves-light green"
-     routerLink="/clientes/novo">
-    <i class="material-icons">add</i>
-  </a>
+    </div>
+  </div>
 </div>

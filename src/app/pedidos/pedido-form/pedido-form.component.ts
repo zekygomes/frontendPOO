@@ -52,7 +52,7 @@ export class PedidoFormComponent implements OnInit {
     var id = this.route.params.subscribe(params => {
       var id = params['id'];
 
-      this.title = id ? 'Fazer Pedido' : 'Novo Cliente';
+      this.title = id ? 'Fazer Pedido' : 'Fazer Pedido';
 
       if (!id)
         return;

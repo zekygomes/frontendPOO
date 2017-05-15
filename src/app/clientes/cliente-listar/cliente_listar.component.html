@@ -1,6 +1,6 @@
 <app-nav-bar></app-nav-bar>
 <p>
-  Montrando {{ clientes.length }} pedidos.
+  Montrando {{ clientes.length }} clientes.
 </p>
 
 <table>
@@ -26,7 +26,7 @@
       <td>{{ cliente.pontoDeReferencia }}</td>
       <td>{{ cliente.situacao }}</td>
       <td>
-        <a [routerLink]="['/pedidos', cliente.id]">
+        <a [routerLink]="['/clientes', cliente.id]">
           <i class="material-icons">mode_edit</i>
         </a>
       </td>
@@ -39,3 +39,9 @@
   </tbody>
 </table>
 
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+  <a class="btn-floating btn-large waves-effect waves-light green"
+     routerLink="/clientes/novo">
+    <i class="material-icons">add</i>
+  </a>
+</div>
