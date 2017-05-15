@@ -14,13 +14,15 @@ import { clienteRouting } from "./clientes/cliente.routing";
 import { ClientesModule } from "./clientes/cliente.module";
 import { pedidoRouting } from "./pedidos/pedido.routing";
 import { PedidosModule } from "./pedidos/pedido.module";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
