@@ -5,16 +5,18 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
-
+import { Cliente } from '../_model/cliente.model';
+ 
 @Injectable()
 export class ClientesService {
 
-  private url: string = "http://jsonplaceholder.typicode.com/users";
+  private url: string = "/api/cliente";
+  private cliente = new Cliente;
 
   constructor(private http: Http) { }
 
   getClientes(){
-    return this.http.get(this.url)
+    return this.http.get(this.url + "/pegar-todos")
       .map(res => res.json());
   }
 
@@ -23,8 +25,12 @@ export class ClientesService {
       .map(res => res.json());
   }
 
-  addCliente(cliente){
-    return this.http.post(this.url, JSON.stringify(cliente))
+  addCliente(cliente : Cliente){
+    return this.http.get("/api/cliente/salvar?nome="+cliente.nome+
+                                            "&email="+cliente.email+
+                                            "&endereco="+cliente.endereco+
+                                            "&telefone="+cliente.telefone+
+                                            "&pontoDeReferencia="+cliente.pontoDeReferencia)
       .map(res => res.json());
   }
 
@@ -38,7 +44,7 @@ export class ClientesService {
       .map(res => res.json());
   }
 
-  private getClienteUrl(id){
-    return this.url + "/" + id;
+  private getClienteUrl(id : number){
+    return this.url + "/pegar-por-id?id=${id}";
   }
 }

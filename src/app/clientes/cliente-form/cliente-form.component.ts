@@ -72,6 +72,7 @@ export class ClienteFormComponent implements OnInit {
     var result,
         userValue = this.form.value;
 
+        console.log(userValue);
     if (userValue.id){
       result = this.clientesService.updateCliente(userValue);
     } else {
