@@ -7,17 +7,18 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 import { ClienteComponent } from '../clientes/cliente.component';
 import { ClientesService } from '../_service/clientes.service';
-import { ClienteFormComponent } from '../clientes/cliente-form/cliente-form.component';
-import { ClienteListarComponent } from "../clientes/cliente-listar/cliente_listar.component";
+import { ClienteFormComponent } from '../clientes/cliente_form/cliente_form.component';
+import { ClienteListarComponent } from "../clientes/cliente_listar/cliente_listar.component";
 
 import { PedidoComponent } from '../pedidos/pedido.component';
 import { PedidosService } from '../_service/pedidos.service';
-import { PedidoFormComponent } from '../pedidos/pedido-form/pedido-form.component';
-import { PedidoListarComponent } from '../pedidos/pedido-listar/pedido_listar.component';
+import { PedidoFormComponent } from '../pedidos/pedido_form/pedido_form.component';
+import { PedidoListarComponent } from '../pedidos/pedido_listar/pedido_listar.component';
 
 import { ProdutoComponent } from '../produtos/produto.component';
 import { ProdutosService } from '../_service/produtos.service';
-
+import { ProdutoFormComponent } from '../produtos/produto_form/produto_form.component';
+import { ProdutoListarComponent } from '../produtos/produto_listar/produto_listar.component';
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { ProdutosService } from '../_service/produtos.service';
     PedidoComponent,
     PedidoFormComponent,
     PedidoListarComponent,
-    ProdutoComponent
+    ProdutoComponent,
+    ProdutoFormComponent,
+    ProdutoListarComponent
     
   ],
   exports: [

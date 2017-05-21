@@ -8,8 +8,8 @@ import { BasicValidators } from '../../shared/basic-validators';
 
 @Component({
   selector: 'app-cliente-form',
-  templateUrl: './cliente-form.component.html',
-  styleUrls: ['./cliente-form.component.css']
+  templateUrl: './cliente_form.component.html',
+  styleUrls: ['./cliente_form.component.css']
 })
 export class ClienteFormComponent implements OnInit {
 

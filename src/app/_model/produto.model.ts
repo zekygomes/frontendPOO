@@ -1,6 +1,7 @@
 export class Produto{
-    cod : number;
-    nome : String;
-    preco : number;
-    nota : number;
+    codProduto : number;
+    nome : string;
+    precoProduto : number;
+    tipoProduto : string;
+	qntEstoque : number;
 }

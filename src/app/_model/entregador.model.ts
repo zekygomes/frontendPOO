@@ -1,6 +1,7 @@
-import { Pessoa } from './pessoa.model';
 
-export class Entregador extends Pessoa{
-    placa : String;
+export class Entregador{
+    idEntregador: number;
+    nome : string;
+    placaVeiculo : String;
 
 }

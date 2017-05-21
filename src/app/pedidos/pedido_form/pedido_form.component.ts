@@ -8,8 +8,8 @@ import { BasicValidators } from '../../shared/basic-validators';
 
 @Component({
   selector: 'app-pedido-form',
-  templateUrl: './pedido-form.component.html',
-  styleUrls: ['./pedido-form.component.css']
+  templateUrl: './pedido_form.component.html',
+  styleUrls: ['./pedido_form.component.css']
 })
 export class PedidoFormComponent implements OnInit {
 

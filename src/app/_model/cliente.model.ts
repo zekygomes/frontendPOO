@@ -1,4 +1,3 @@
-import { Pessoa } from './pessoa.model';
 
 export class Cliente {
     idCliente: number;
@@ -8,4 +7,6 @@ export class Cliente {
     telefone : String;
     pontoDeReferencia : String;
     situacao : boolean;
+
+
 }

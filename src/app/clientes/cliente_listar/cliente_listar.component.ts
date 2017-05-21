@@ -15,14 +15,15 @@ export class ClienteListarComponent implements OnInit {
   ngOnInit() {
     this.clienteService.getClientes()
       .subscribe(data => this.clientes = data);
+      
   }
 
-  deleteCliente(cliente){
-    if (confirm("Tem certeza que deseja excluir o cliente: " + cliente.name + "?")) {
+  deleteCliente(cliente : Cliente){
+    if (confirm("Tem certeza que deseja excluir o cliente: " + cliente.nome + "?")) {
       var index = this.clientes.indexOf(cliente);
       this.clientes.splice(index, 1);
 
-      this.clienteService.deleteCliente(cliente.id)
+      this.clienteService.deleteCliente(cliente.idCliente)
         .subscribe(null,
           err => {
             alert("Cliente não excluído.");

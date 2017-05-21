@@ -5,16 +5,18 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
+import { Produto } from '../_model/produto.model';
 
 @Injectable()
 export class ProdutosService {
 
-  private url: string = "http://jsonplaceholder.typicode.com/users";
+  private url: string = "/api/produto";
+  private produto = new Produto;
 
   constructor(private http: Http) { }
 
   getProdutos(){
-    return this.http.get(this.url)
+    return this.http.get(this.url+"/pegar-todos")
       .map(res => res.json());
   }
 
@@ -24,7 +26,10 @@ export class ProdutosService {
   }
 
   addProduto(produto){
-    return this.http.post(this.url, JSON.stringify(produto))
+    return this.http.get("/api/produto/salvar?nome="+produto.nome+
+                                            "&precoProduto="+produto.precoProduto+
+                                            "&tipoProduto="+produto.tipoProduto+
+                                            "&qntEstoque="+produto.qntEstoque)
       .map(res => res.json());
   }
 
@@ -39,6 +44,6 @@ export class ProdutosService {
   }
 
   private getProdutoUrl(id){
-    return this.url + "/" + id;
+    return this.url + "/pegar-por-id?id=" + id;
   }
 }

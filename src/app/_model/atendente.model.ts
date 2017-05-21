@@ -1,7 +1,8 @@
-import { Pessoa } from './pessoa.model';
 
-export class Atendente extends Pessoa{
-    login : String;
-    senha : String;
+export class Atendente {
+    idAtendente: number;
+    nome : string;
+    login : string;
+    senha : string;
 
 }

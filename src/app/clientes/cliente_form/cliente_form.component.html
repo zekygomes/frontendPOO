@@ -26,7 +26,7 @@
     <div class="row">
       <div class="input-field col s6">
         <i class="material-icons prefix">email</i>
-        <input id="email" type="email" class="validate" [(ngModel)]="cliente.email" formControlName="email" [class.invalid]="form.controls['email'].touched && !form.controls['email'].valid">
+        <input id="email" type="text" class="validate" [(ngModel)]="cliente.email" formControlName="email" >
         <label for="email" [class.active]="cliente.email" data-error="E-mail Inválido">
           E-mail
         </label>

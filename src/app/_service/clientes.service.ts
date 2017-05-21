@@ -30,7 +30,8 @@ export class ClientesService {
                                             "&email="+cliente.email+
                                             "&endereco="+cliente.endereco+
                                             "&telefone="+cliente.telefone+
-                                            "&pontoDeReferencia="+cliente.pontoDeReferencia)
+                                            "&pontoDeReferencia="+cliente.pontoDeReferencia+
+                                            "&situacao="+cliente.situacao)
       .map(res => res.json());
   }
 
@@ -45,6 +46,6 @@ export class ClientesService {
   }
 
   private getClienteUrl(id : number){
-    return this.url + "/pegar-por-id?id=${id}";
+    return this.url + "/pegar-por-id?id="+id;
   }
 }
