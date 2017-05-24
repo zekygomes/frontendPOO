@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule }  from '@angular/router';
 import { HttpModule }  from '@angular/http';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import {MdIconModule} from '@angular/material';
 
 import { ClienteComponent } from '../clientes/cliente.component';
@@ -30,7 +30,6 @@ import { ProdutoListarComponent } from '../produtos/produto_listar/produto_lista
     ReactiveFormsModule,
     RouterModule,
     HttpModule,
-    BrowserAnimationsModule,
     MdIconModule
   ],
   declarations: [
@@ -51,7 +50,6 @@ import { ProdutoListarComponent } from '../produtos/produto_listar/produto_lista
     ClienteComponent,
     PedidoComponent,
     ProdutoComponent,
-    BrowserAnimationsModule,
     MdIconModule
   ],
   providers: [

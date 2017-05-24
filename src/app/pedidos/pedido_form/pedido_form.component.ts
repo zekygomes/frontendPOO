@@ -6,6 +6,7 @@ import { Pedido } from '../../_model/pedido.model';
 import { PedidosService } from '../../_service/pedidos.service';
 import { BasicValidators } from '../../shared/basic-validators';
 
+
 @Component({
   selector: 'app-pedido-form',
   templateUrl: './pedido_form.component.html',
@@ -13,44 +14,23 @@ import { BasicValidators } from '../../shared/basic-validators';
 })
 export class PedidoFormComponent implements OnInit {
 
-    foods = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
-
   form: FormGroup;
   title: string;
-  cliente: Pedido = new Pedido();
+  pedido: Pedido = new Pedido();
 
-  constructor(
-    formBuilder: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute,
-    private pedidosService: PedidosService
+
+
+  constructor( formBuilder: FormBuilder, private router: Router,
+                private route: ActivatedRoute, private pedidosService: PedidosService
   ) {
     this.form = formBuilder.group({
-      nome: ['', [
-        Validators.required,
-        Validators.minLength(3)
-      ]],
-      email: ['', [
-        Validators.required,
-        BasicValidators.email
-        //Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-      ]],
-      endereco: [],
-      telefone: [],
-      pontoDeReferencia: [],
-      situacao: [false, [
+      cliente: ['', Validators.required, Validators.minLength(3)],
+      refeicoes: ['', Validators.required],
+      qntRefeicao: ['', Validators.required],
+      sobremesa: [],
+      qntSobremesa: ['', Validators.required],
+      entregador: [],
 
-      ]],
-      //address: formBuilder.group({
-      // street: ['', Validators.minLength(3)],
-      //  suite: [],
-      //  city: ['', Validators.maxLength(30)],
-      //  zipcode: ['', Validators.pattern('^([0-9]){5}([-])([0-9]){4}$')]
-      // })
     });
   }
 
@@ -65,7 +45,7 @@ export class PedidoFormComponent implements OnInit {
 
       this.pedidosService.getPedido(id)
         .subscribe(
-          cliente => this.cliente = cliente,
+          pedido => this.pedido = pedido,
           response => {
             if (response.status == 404) {
               this.router.navigate(['NotFound']);
