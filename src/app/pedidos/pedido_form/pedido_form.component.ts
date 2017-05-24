@@ -13,6 +13,12 @@ import { BasicValidators } from '../../shared/basic-validators';
 })
 export class PedidoFormComponent implements OnInit {
 
+    foods = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
+
   form: FormGroup;
   title: string;
   cliente: Pedido = new Pedido();
