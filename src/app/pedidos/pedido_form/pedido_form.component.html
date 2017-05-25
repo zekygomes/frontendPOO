@@ -1,32 +1,16 @@
 <app-nav-bar></app-nav-bar>
 <h5>{{ title }}</h5>
-
-<form materialize class="col s12" [formGroup]="form" (ngSubmit)="save()">
-
-  <div class="row">
-  <div class="input-field col s6">
-    <div class="select-wrapper ng-untouched ng-pristine ng-valid initialized"><span class="caret">▼</span>
-    <input type="text" class="select-dropdown" readonly="true" value="Choose your option"
-    data-activates="select-options-0395d11d-66da-b24e-e476-5df4763e4b5f">
-      <select materialize="material_select" name="selectedOption" ng-reflect-materialize="material_select" 
-      ng-reflect-materialize-select-options="[object Object],[object Object],[object Object]"
-      ng-reflect-name="selectedOption" class="ng-untouched ng-pristine ng-valid initialized">
-          <option disabled="" selected="" value="">Choose your option</option>
-          <option value="1" ng-reflect-value="1">Option 1</option>
-          <option value="2" ng-reflect-value="2">Option 2</option>
-          <option value="3" ng-reflect-value="3">Option 3</option>
-      </select>
-    </div>
-    <label>Materialize Select</label>
-  </div>
-
+<form>
   <div class="row">
     <div class="input-field col s10">
       <i class="material-icons prefix">account_circle</i>
-      <input id="cliente" type="text" class="validate" [(ngModel)]="pedido.cliente">
-      <label for="cliente" [class.active]="pedido.cliente" data-error="Campo obrigatório e deve conter mais de 3 letras">
-          Cliente
-        </label>
+      <select materialize="material_select" name="cliente" [materializeSelectOptions]="cliente" id="cliente"
+        [attr.disabled]="isDisabled?true:null" [(ngModel)]="cliente" formControlName="cliente">
+          <option value="" disabled selected>Cliente</option>
+          <option>Cliente1</option>
+          <option>Cliente1</option>
+          <option>Cliente1</option>
+      </select>
     </div>
     <div class="input-field col s2">
       <button class="btn waves-effect waves-light" type="submit" [disabled]="!form.valid" routerLink="/clientes/novo">
@@ -35,52 +19,92 @@
     </div>
   </div>
   <div class="row">
-    <div class="input-field col s8">
+    <div class="input-field col s6">
       <i class="material-icons prefix">shopping_cart</i>
-      <input id="refeicao" type="text" class="validate" [(ngModel)]="pedido.endereco" formControlName="refeicoes" [class.invalid]="form.controls['endereco'].touched && !form.controls['endereco'].valid">
-      <label for="endereco" [class.active]="cliente.endereco" data-error="Campo obrigatório e deve conter mais de 3 letras">
-          Refeição
-        </label>
+        <select materialize="material_select" name="produtoRefeicoes" [materializeSelectOptions]="produtoRefeicoes" id="refeicao"
+        [attr.disabled]="isDisabled?true:null" [(ngModel)]="produtoRefeicoes" formControlName="refeicoes">
+          <option value="" disabled selected>Escolha a Refeição</option>
+          <option>Pizza</option>
+          <option>Sandwich</option>
+          <option>Esfirra</option>
+        </select>
+        <label for="refeicao" [class.active]="produtoRefeicoes">Refeição </label>
     </div>
-    <div class="input-field col s4">
+    <div class="input-field col s2">
       <i class="material-icons prefix">label</i>
-      <input id="qntEstoque" type="number" class="validate" [(ngModel)]="produto.qntEstoque" formControlName="qntRefeicao">
-      <label for="qntEstoque" [class.active]="produto.qntEstoque">Quantidade</label>
+      <input id="qntRefeicao" type="number" class="validate" [(ngModel)]="produto.qntEstoque" formControlName="qntRefeicao">
+      <label for="qntRefeicao" [class.active]="produto.qntEstoque">Quantidade</label>
+    </div>
+    <div class="input-field col s2">
+      <i class="material-icons prefix">payment</i>
+      <input id="valorRefeicoes" type="number" class="validate" [(ngModel)]="produto.precoProduto" formControlName="valorRefeicoes">
+      <label for="valorRefeicoes" [class.active]="produto.precoProduto">Valor Uni R$</label>
+    </div>
+        <div class="input-field col s2">
+      <i class="material-icons prefix">payment</i>
+      <input id="valorRefeicoes" type="number" class="validate" [(ngModel)]="produto.precoProduto" formControlName="valorRefeicoes">
+      <label for="valorRefeicoes" [class.active]="produto.precoProduto">Valor TotalR$</label>
     </div>
   </div>
+
   <div class="row">
-    <div class="input-field col s8">
+    <div class="input-field col s6">
       <i class="material-icons prefix">shopping_cart</i>
-      <input id="endereco" type="text" class="validate" [(ngModel)]="cliente.endereco" formControlName="sobremesa" [class.invalid]="form.controls['endereco'].touched && !form.controls['endereco'].valid">
-      <label for="endereco" [class.active]="cliente.endereco" data-error="Campo obrigatório e deve conter mais de 3 letras">
-          Sobremesa
-        </label>
+        <select materialize="material_select" name="produtoSobremesas" [materializeSelectOptions]="produtoSobremesas" id="sobremesa"
+        [attr.disabled]="isDisabled?true:null" [(ngModel)]="produtoSobremesas" formControlName="sobremesa">
+          <option value="" disabled selected>Escolha a Sobremesa</option>
+          <option *ngFor="let option of produtoSobremesas" [value]="option.value">{{option.name}}</option>
+        </select>
+        <label for="sobremesa" [class.active]="produtoSobremesas">Sobremesa </label>
     </div>
-    <div class="input-field col s4">
+    <div class="input-field col s2">
       <i class="material-icons prefix">label</i>
       <input id="qntEstoque" type="number" class="validate" [(ngModel)]="produto.qntEstoque" formControlName="qntSobremesa">
       <label for="qntEstoque" [class.active]="produto.qntEstoque">Quantidade</label>
     </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s8">
-      <i class="material-icons prefix">shopping_cart</i>
-      <input id="endereco" type="text" class="validate" [(ngModel)]="cliente.endereco" formControlName="sobremesa" [class.invalid]="form.controls['endereco'].touched && !form.controls['endereco'].valid">
-      <label for="endereco" [class.active]="cliente.endereco" data-error="Campo obrigatório e deve conter mais de 3 letras">
-          Bebida
-        </label>
+    <div class="input-field col s2">
+      <i class="material-icons prefix">payment</i>
+      <input id="qntEstoque" type="number" class="validate" [(ngModel)]="produto.qntEstoque" formControlName="qntSobremesa">
+      <label for="qntEstoque" [class.active]="produto.qntEstoque">Valor R$</label>
     </div>
-    <div class="input-field col s4">
+    <div class="input-field col s2">
+      <i class="material-icons prefix">payment</i>
+      <input id="valorRefeicoes" type="number" class="validate" [(ngModel)]="produto.precoProduto" formControlName="valorRefeicoes">
+      <label for="valorRefeicoes" [class.active]="produto.precoProduto">Valor TotalR$</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s6">
+      <i class="material-icons prefix">shopping_cart</i>
+        <select materialize="material_select" name="produtoRefeicoes" [materializeSelectOptions]="produtoRefeicoes" id="refeicao"
+        [attr.disabled]="isDisabled?true:null" [(ngModel)]="produtoRefeicoes" formControlName="bebida">
+          <option value="" disabled selected>Escolha a Bebida</option>
+          <option ></option>
+        </select>
+        <label for="refeicao" [class.active]="produtoRefeicoes">Bebida </label>
+    </div>
+    <div class="input-field col s2">
       <i class="material-icons prefix">label</i>
       <input id="qntEstoque" type="number" class="validate" [(ngModel)]="produto.qntEstoque" formControlName="sobremesa">
       <label for="qntEstoque" [class.active]="produto.qntEstoque">Quantidade</label>
+    </div>
+    <div class="input-field col s2">
+      <i class="material-icons prefix">payment</i>
+      <input id="valorSobremesa" type="number" class="validate" [(ngModel)]="produto.qntEstoque" formControlName="sobremesa">
+      <label for="qntEstoque" [class.active]="produto.qntEstoque">Valor R$</label>
+    </div>
+      <div class="input-field col s2">
+      <i class="material-icons prefix">payment</i>
+      <input id="valorRefeicoes" type="number" class="validate" [(ngModel)]="produto.precoProduto" formControlName="valorRefeicoes">
+      <label for="valorRefeicoes" [class.active]="produto.precoProduto">Valor TotalR$</label>
     </div>
   </div>
 
   <div class="row">
     <div class="input-field col s12">
       <i class="material-icons prefix">account_circle</i>
-      <input id="nome" type="text" class="validate" [(ngModel)]="cliente.nome" formControlName="entregador" [class.invalid]="form.controls['nome'].touched && !form.controls['nome'].valid">
+      <input id="nome" type="text" class="validate" [(ngModel)]="cliente.nome" formControlName="entregador">
       <label for="nome" [class.active]="cliente.nome" data-error="Campo obrigatório e deve conter mais de 3 letras">
           Entregador
         </label>
@@ -96,18 +120,18 @@
     </div>
   </div>
 
-
-</div>
-
-
 </form>
 
-          <div class="row">
-            <div class="input-field col s6">
-              <select [(ngModel)]="selectedOption" name="selectedOption" materialize="material_select" [materializeSelectOptions]="selectOptions" [attr.disabled]="isDisabled?true:null">
-                <option value="" disabled selected>Choose your option</option>
-                <option *ngFor="let option of selectOptions" [value]="option.value">{{option.name}}</option>
-              </select>
-              <label>Materialize Select</label>
-            </div>
 
+<!--
+  <div class="row">
+   <div class="input-field col s6">
+      <select materialize="material_select" name="selectedOption" [materializeSelectOptions]="selectOptions" [attr.disabled]="isDisabled?true:null"
+      [(ngModel)]="selectedOption" >
+          <option value="" disabled selected>Choose your option</option>
+          <option *ngFor="let option of selectOptions" [value]="option.value">{{option.name}}</option>
+      </select>
+      <label>Materialize Select</label>
+    </div>
+  </div>
+-->

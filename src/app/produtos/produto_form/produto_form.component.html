@@ -6,8 +6,8 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">receipt</i>
-        <input id="nomeProduto" type="text" class="validate" [(ngModel)]="produto.nome" formControlName="nomeProduto" [class.invalid]="form.controls['nomeProduto'].touched && !form.controls['nomeProduto'].valid">
-        <label for="nomeProduto" [class.active]="produto.nome" data-error="Campo obrigatório e deve conter mais de 3 letras">
+        <input id="nome" type="text" class="validate" [(ngModel)]="produto.nome" formControlName="nome" >
+        <label for="nome" [class.active]="produto.nome" >
           Nome
         </label>
       </div>
@@ -16,8 +16,8 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">receipt</i>
-        <input id="precoProduto" type="text" class="validate" [(ngModel)]="produto.precoProduto" formControlName="precoProduto" [class.invalid]="form.controls['precoProduto'].touched && !form.controls['precoProduto'].valid">
-        <label for="precoProduto" [class.active]="produto.precoProduto" data-error="Campo obrigatório e deve conter mais de 3 letras">
+        <input id="precoProduto" type="text" class="validate" [(ngModel)]="produto.precoProduto" formControlName="precoProduto" >
+        <label for="precoProduto" [class.active]="produto.precoProduto">
           Preço
         </label>
       </div>
@@ -43,19 +43,9 @@
     </div>
 
     <div class="row">
-      <div class="input-field col s5">
-        <p>
-          <input name="situacao" type="radio" id="ativo" />
-          <label for="ativo">Ativo</label>
-        </p>
+      <div class="input-field col s6">
       </div>
-      <div class="input-field col s5">
-        <p>
-          <input name="situacao" type="radio" id="inativo" />
-          <label for="inativo">Inativo</label>
-        </p>
-      </div>
-      <div class="input-field col s2">
+      <div class="input-field col s6">
         <button class="btn-large waves-effect waves-light" type="submit" [disabled]="!form.valid">
           Enviar<i class="material-icons right">send</i>
         </button>

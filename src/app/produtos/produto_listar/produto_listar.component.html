@@ -18,14 +18,9 @@
     <tr *ngFor="let produto of produtos">
       <td>{{ produto.codProduto }}</td>
       <td>{{ produto.nome }}</td>
-      <td>{{ produto.precoProduto }}</td>
+      <td>{{ produto.valor }}</td>
       <td>{{ produto.tipoProduto }}</td>
-      <td>{{ produto.qntEstoque }}</td>
-      <td>
-        <a [routerLink]="['/api/produto', produto.codProduto]">
-          <i class="material-icons">mode_edit</i>
-        </a>
-      </td>
+      <td>{{ produto.qntProduto }}</td>
       <td>
         <a (click)="deleteProduto(produto)" href="">
           <i class="material-icons">delete</i>
@@ -35,9 +30,4 @@
   </tbody>
 </table>
 
-<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-  <a class="btn-floating btn-large waves-effect waves-light green"
-     routerLink="/api/produto/novo">
-    <i class="material-icons">add</i>
-  </a>
-</div>
+

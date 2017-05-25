@@ -24,10 +24,7 @@ export class ClienteFormComponent implements OnInit {
     private clientesService: ClientesService
   ) {
     this.form = formBuilder.group({
-      nome: ['', [
-        Validators.required,
-        Validators.minLength(3)
-      ]],
+      nome: [],
       email: ['', [
         Validators.required,
         BasicValidators.email
@@ -36,15 +33,8 @@ export class ClienteFormComponent implements OnInit {
       endereco: [],
       telefone: [],
       pontoDeReferencia: [],
-      situacao: [false, [
-
-      ]],
-      //address: formBuilder.group({
-      // street: ['', Validators.minLength(3)],
-      //  suite: [],
-      //  city: ['', Validators.maxLength(30)],
-      //  zipcode: ['', Validators.pattern('^([0-9]){5}([-])([0-9]){4}$')]
-      // })
+      situacao: [
+      ]
     });
   }
 

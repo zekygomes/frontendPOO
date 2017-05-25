@@ -4,9 +4,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MaterializeDirective } from "angular2-materialize";
 
 import { Pedido } from '../../_model/pedido.model';
+import { Produto } from '../../_model/produto.model';
+import { Cliente } from '../../_model/cliente.model';
 import { PedidosService } from '../../_service/pedidos.service';
 import { BasicValidators } from '../../shared/basic-validators';
-
+import { ClientesService } from '../../_service/clientes.service';
+import { ProdutosService } from '../../_service/produtos.service';
+import { EntregadorService } from '../../_service/entregador.service';
 
 @Component({
   selector: 'app-pedido-form',
@@ -15,60 +19,59 @@ import { BasicValidators } from '../../shared/basic-validators';
 })
 export class PedidoFormComponent implements OnInit {
 
-   firstName = "";
-  selectedOption = "";
-
-  selectOptions = [];
-
-  isTest5Checked = false;
-  isTest6Checked = true;
-  
-  radioButtonValue = 3;
-
-  maxLength = 20;
-  autocompleteInit = {
-    'data': {'Apple': null, 'Google': null},
-    onAutocomplete: (val) => {
-      console.log(val);
-    },
-  };
-  isDisabled = false;
-
-   public ngOnInit() {
-      window.setTimeout(()=>{
-        this.selectOptions = [
-          {value:1,name:"Option 1"},
-          {value:2,name:"Option 2"},
-          {value:3,name:"Option 3"}
-        ]
-      },100);
-   }
-
-  onFileSelection(e) {
-    console.log(e.target.files[0].name)
-  }
-  
   form: FormGroup;
   title: string;
   pedido: Pedido = new Pedido();
 
   autocomplite:string;
 
+  selectOptions = [];
+  selectedOption;
+  cliente : Cliente;
 
-  constructor( formBuilder: FormBuilder, private router: Router,
+  precoRefeicao;
+
+  produtoRefeicao;
+  produtoSobremesas;
+  produtoBebidas;
+
+
+    constructor( private _produtoService : ProdutosService,formBuilder: FormBuilder, private router: Router,
                 private route: ActivatedRoute, private pedidosService: PedidosService
   ) {
+
+      switch(this.produtoRefeicao){
+      case "Pizza":{
+        this.precoRefeicao=10;
+      }
+      case "Sandwich":{
+        this.precoRefeicao=15;
+      }
+      case "Esfirra":{
+        this.precoRefeicao=8;
+      }
+    }
     this.form = formBuilder.group({
-      cliente: ['', Validators.required, Validators.minLength(3)],
-      refeicoes: ['', Validators.required],
-      qntRefeicao: ['', Validators.required],
+      cliente: [],
+      refeicoes: [],
+      qntRefeicao: [],
       sobremesa: [],
-      qntSobremesa: ['', Validators.required],
+      qntSobremesa: [],
       entregador: [],
       selectedOption: [],
     });
   }
 
+   public ngOnInit() {
+     
+
+
+   }
+
+  onFileSelection(e) {
+    console.log(e.target.files[0].name)
+  }
+  
 
   save() {
     var result,

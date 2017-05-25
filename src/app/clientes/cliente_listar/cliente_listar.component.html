@@ -20,11 +20,11 @@
   <tbody>
     <tr *ngFor="let cliente of clientes">
       <td>{{ cliente.nome }}</td>
-      <td>{{ cliente.email }}</td>
+      <td>{{ cliente.email_cliente }}</td>
       <td>{{ cliente.endereco }}</td>
       <td>{{ cliente.telefone }}</td>
       <td>{{ cliente.pontoDeReferencia }}</td>
-      <td>{{ cliente.situacao }}</td>
+      <td>{{ cliente.situacao_cliente }}</td>
       <md-icon svgIcon="thumbs-up"></md-icon>
       <td>
         <a [routerLink]="['/clientes', cliente.id]">

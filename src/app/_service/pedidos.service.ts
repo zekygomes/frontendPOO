@@ -5,13 +5,18 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
+import { Produto } from '../_model/produto.model';
+import { Pedido } from '../_model/pedido.model';
+
 
 @Injectable()
 export class PedidosService {
 
-  private url: string = "http://jsonplaceholder.typicode.com/users";
+  private url: string = "/api/pedido";
 
   constructor(private http: Http) { }
+
+  private pedido = new Pedido;
 
   getPedidos(){
     return this.http.get(this.url)
@@ -24,7 +29,13 @@ export class PedidosService {
   }
 
   addPedido(pedido){
-    return this.http.post(this.url, JSON.stringify(pedido))
+    return this.http.get("/api/pedido/salvar?itensPedido="+this.pedido.itensPedido+
+                                            "&idCliente="+this.pedido.idCliente+
+                                            "&dataPedido="+this.pedido.dataPedido+
+                                            "&valorTotal="+this.pedido.valorTotal+
+                                            "&idEntregador="+this.pedido.idEntregador+
+                                            "&formaPagamento="+this.pedido.formaPagamento+
+                                            "&status="+this.pedido.status)
       .map(res => res.json());
   }
 

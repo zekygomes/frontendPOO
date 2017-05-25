@@ -6,7 +6,7 @@ export class Cliente {
     endereco : String;
     telefone : String;
     pontoDeReferencia : String;
-    situacao : boolean;
+    situacao : String;
 
 
 }

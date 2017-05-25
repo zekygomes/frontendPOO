@@ -50,19 +50,18 @@
     </div>
 
     <div class="row">
-      <div class="input-field col s5">
-        <p>
-          <input name="situacao" type="radio" id="ativo" />
-          <label for="ativo">Ativo</label>
-        </p>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">thumbs_up_down</i>
+        <select materialize="material_select" id="situacao" type="text" class="validate"  
+          [(ngModel)]="cliente.situacao" formControlName="situacao">
+            <option> Ativo</option>
+            <option>Inativo</option>
+          </select>
+        <label for="situacao" [class.active]="cliente.situacao">
+          Tipo de Produto
+        </label>
       </div>
-      <div class="input-field col s5">
-        <p>
-          <input name="situacao" type="radio" id="inativo" />
-          <label for="inativo">Inativo</label>
-        </p>
-      </div>
-      <div class="input-field col s2">
+      <div class="input-field col s6">
         <button class="btn-large waves-effect waves-light" type="submit" [disabled]="!form.valid">
           Enviar<i class="material-icons right">send</i>
         </button>
@@ -71,46 +70,3 @@
 
   </form>
 </div>
-
-<!--
-    <div formGroupName="address">
-      <div class="row">
-        <div class="input-field col s8">
-          <i class="material-icons prefix">place</i>
-          <input id="street" type="text" class="validate"
-                 [(ngModel)]="user.address.street" formControlName="street"
-                 [class.invalid]="form.controls['address'].controls['street'].touched
-                  && !form.controls['address'].controls['street'].valid">
-          <label for="street"
-                 [class.active]="user.address.street"
-                 data-error="Invalid Street">
-            Street
-          </label>
-        </div>
-        <div class="input-field col s4">
-          <input id="suite" type="text" class="validate"
-                 [(ngModel)]="user.address.suite" formControlName="suite">
-          <label for="suite" [class.active]="user.address.suite">Suite</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s8">
-          <i class="material-icons prefix">map</i>
-          <input id="city" type="text" class="validate"
-                 [(ngModel)]="user.address.city" formControlName="city">
-          <label for="city" [class.active]="user.address.city">City</label>
-        </div>
-        <div class="input-field col s4">
-          <input id="zipcode" type="text" class="validate"
-                 [(ngModel)]="user.address.zipcode" formControlName="zipcode"
-                 [class.invalid]="form.controls['address'].controls['zipcode'].touched
-                  && !form.controls['address'].controls['zipcode'].valid">
-          <label for="zipcode"
-                 [class.active]="user.address.zipcode"
-                 data-error="Invalid ZipCode">
-            ZipCode
-          </label>
-        </div>
-      </div>
-    </div>
-    -->

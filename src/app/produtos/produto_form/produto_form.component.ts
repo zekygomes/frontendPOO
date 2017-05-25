@@ -24,15 +24,10 @@ export class ProdutoFormComponent implements OnInit {
     private produtosService: ProdutosService
   ) {
     this.form = formBuilder.group({
-      nomeProduto: ['', [
-        Validators.required,
-        Validators.minLength(3)
-      ]],
-      precoProduto: ['', [
-      ]],
-      tipoProduto: [],
+      nome: [],
+      precoProduto: [],
       qntEstoque: [],
-      pontoDeReferencia: [],
+      tipoProduto: []
     });
   }
 

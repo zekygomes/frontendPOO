@@ -20,16 +20,32 @@ export class ProdutosService {
       .map(res => res.json());
   }
 
+  getRefeicoes(){
+    return this.http.get(this.url+"/pegar-refeicoes")
+      .map(res => res.json());
+  }
+
+  getSobremesas(){
+    return this.http.get(this.url+"/pegar-sobremesas")
+      .map(res => res.json());
+  }
+
+  getBebidas(){
+    return this.http.get(this.url+"/pegar-bebidas")
+      .map(res => res.json());
+  }
+
   getProduto(id){
     return this.http.get(this.getProdutoUrl(id))
       .map(res => res.json());
   }
 
   addProduto(produto){
-    return this.http.get("/api/produto/salvar?nome="+produto.nome+
-                                            "&precoProduto="+produto.precoProduto+
-                                            "&tipoProduto="+produto.tipoProduto+
-                                            "&qntEstoque="+produto.qntEstoque)
+    return this.http.get("/api/produto/salvar?nome="+this.produto.nome+
+                                            "&precoProduto="+this.produto.precoProduto+
+                                            "&qntEstoque="+this.produto.qntEstoque+
+                                            "&tipoProduto="+this.produto.tipoProduto
+                                            )
       .map(res => res.json());
   }
 
