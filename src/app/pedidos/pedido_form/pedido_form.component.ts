@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MaterializeDirective } from "angular2-materialize";
 
 import { Pedido } from '../../_model/pedido.model';
 import { PedidosService } from '../../_service/pedidos.service';
@@ -14,10 +15,44 @@ import { BasicValidators } from '../../shared/basic-validators';
 })
 export class PedidoFormComponent implements OnInit {
 
+   firstName = "";
+  selectedOption = "";
+
+  selectOptions = [];
+
+  isTest5Checked = false;
+  isTest6Checked = true;
+  
+  radioButtonValue = 3;
+
+  maxLength = 20;
+  autocompleteInit = {
+    'data': {'Apple': null, 'Google': null},
+    onAutocomplete: (val) => {
+      console.log(val);
+    },
+  };
+  isDisabled = false;
+
+   public ngOnInit() {
+      window.setTimeout(()=>{
+        this.selectOptions = [
+          {value:1,name:"Option 1"},
+          {value:2,name:"Option 2"},
+          {value:3,name:"Option 3"}
+        ]
+      },100);
+   }
+
+  onFileSelection(e) {
+    console.log(e.target.files[0].name)
+  }
+  
   form: FormGroup;
   title: string;
   pedido: Pedido = new Pedido();
 
+  autocomplite:string;
 
 
   constructor( formBuilder: FormBuilder, private router: Router,
@@ -30,29 +65,10 @@ export class PedidoFormComponent implements OnInit {
       sobremesa: [],
       qntSobremesa: ['', Validators.required],
       entregador: [],
-
+      selectedOption: [],
     });
   }
 
-  ngOnInit() {
-    var id = this.route.params.subscribe(params => {
-      var id = params['id'];
-
-      this.title = id ? 'Fazer Pedido' : 'Fazer Pedido';
-
-      if (!id)
-        return;
-
-      this.pedidosService.getPedido(id)
-        .subscribe(
-          pedido => this.pedido = pedido,
-          response => {
-            if (response.status == 404) {
-              this.router.navigate(['NotFound']);
-            }
-          });
-    });
-  }
 
   save() {
     var result,
